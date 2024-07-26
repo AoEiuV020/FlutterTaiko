@@ -110,9 +110,10 @@ app.*.map.json
 !.idea/codeStyles/
 !.idea/dictionaries/
 !.idea/runConfigurations/
+
 # melos
 melos_overrides.yaml
-**/.idea
+*/*/.idea/
 **/*.iml
 lcov.info
 .packages
