@@ -1,8 +1,41 @@
-name: new_project_workspace
+name: fluttertaiko
+description: A Very Good Project created by Very Good CLI.
+version: 1.0.0+1
 publish_to: none
 
 environment:
-  sdk: ^3.3.3
+  sdk: ^3.4.0
+
+dependencies:
+  audioplayers: ^6.0.0
+  bloc: ^8.1.4
+  equatable: ^2.0.5
+  flame: ^1.18.0
+  flame_audio: ^2.10.2
+  flame_behaviors: ^1.1.0
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.6
+  flutter_localizations:
+    sdk: flutter
+  google_fonts: ^6.2.1
+  intl: ^0.19.0
 
 dev_dependencies:
-  melos: ^6.0.0
+  bloc_test: ^9.1.7
+  flame_test: ^1.16.2
+  flutter_test:
+    sdk: flutter
+  melos: ^6.1.0
+  mockingjay: ^0.5.0
+  mocktail: ^1.0.4
+  very_good_analysis: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/audio/
+    - assets/images/
+    - assets/licenses/poppins/

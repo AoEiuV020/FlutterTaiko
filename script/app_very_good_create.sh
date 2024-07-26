@@ -7,7 +7,21 @@ if [ -z "$name" ] || [ "$name" = "." ]; then
     cd "$ROOT"
     rm -f pubspec.yaml README.md
     mv .gitignore .gitignore.bak
-    very_good create flutter_app --org-name "$organization" -o . "$project_name"
+    very_good create flutter_app --org-name "$organization" "$project_name"
+    for item in "$project_name"/* "$project_name"/.*; do
+        # 排除 . 和 ..
+        if [[ "$(basename "$item")" != "." && "$(basename "$item")" != ".." ]]; then
+            if [ -e "$item" ]; then
+                if [ -e "./$(basename "$item")" ]; then
+                    rm -rf "./$(basename "$item")"
+                fi
+            fi
+            # 移动文件或文件夹到当前目录
+            mv "$item" .
+        fi
+    done
+    rm -rf "$project_name"
+    sed -i '' '/flutter_gen: any/d' pubspec.yaml
     dart pub add dev:melos
     cat .gitignore.bak >>.gitignore
     rm -f .gitignore.bak
