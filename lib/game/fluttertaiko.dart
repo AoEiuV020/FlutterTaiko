@@ -3,6 +3,7 @@ import 'package:flame/cache.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/painting.dart';
+import 'package:fluttertaiko/game/components/beetmap_component.dart';
 import 'package:fluttertaiko/game/game.dart';
 import 'package:fluttertaiko/l10n/l10n.dart';
 
@@ -31,6 +32,7 @@ class Fluttertaiko extends FlameGame {
   Future<void> onLoad() async {
     final world = World(
       children: [
+        VirtualTaiko()..size = size,
         Unicorn(position: size / 2),
         CounterComponent(
           position: (size / 2)
@@ -38,6 +40,7 @@ class Fluttertaiko extends FlameGame {
               Vector2(0, 16),
             ),
         ),
+        BeetmapComponent(size.y / 2),
       ],
     );
 
@@ -45,6 +48,6 @@ class Fluttertaiko extends FlameGame {
     await addAll([world, camera]);
 
     camera.viewfinder.position = size / 2;
-    camera.viewfinder.zoom = 8;
+    camera.viewfinder.zoom = 1;
   }
 }
